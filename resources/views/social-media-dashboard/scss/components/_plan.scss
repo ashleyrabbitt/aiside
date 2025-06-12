@@ -1,0 +1,15 @@
+.lqd-card.lqd-plan-overview {
+	@apply bg-none bg-surface-background border-none shadow-md shadow-black/5;
+
+	.lqd-card {
+		@apply bg-transparent border shadow-none;
+	}
+
+	.lqd-card-body {
+		@apply py-4 px-5;
+
+		svg {
+			@apply hue-rotate-[130deg]
+		}
+	}
+}

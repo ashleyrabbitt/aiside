@@ -1,0 +1,28 @@
+{
+	"name": "social-media-dashboard",
+	"extends": "default",
+	"asset-path": "themes\/social-media-dashboard",
+	"landingPage": {
+		"googleFonts": {
+			"Golos+Text": [
+				"400"
+			],
+			"Onest": [
+				"500",
+				"700"
+			]
+		}
+	},
+	"dashboard": {
+		"bodyClass": "text-base",
+		"googleFonts": {
+			"Lato": [
+				"400",
+				"500",
+				"700",
+				"800",
+				"900"
+			]
+		}
+	}
+}

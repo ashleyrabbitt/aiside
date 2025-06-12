@@ -1,0 +1,7 @@
+.header-user-dropdown {
+	@apply border-s ps-4;
+
+	> .lqd-dropdown-trigger {
+		@apply size-9;
+	}
+}

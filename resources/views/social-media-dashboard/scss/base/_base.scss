@@ -1,0 +1,88 @@
+@import './vars';
+
+html,
+body {
+	height: 100vh;
+}
+
+body {
+	@apply p-[--body-padding] overflow-hidden lg:ps-0 bg-gradient-to-b from-gradient-from via-gradient-via to-gradient-to;
+
+	&.lqd-page-generator-v2 {
+		@apply p-0;
+
+		.lqd-page-wrapper {
+			@apply lg:ps-0 lg:pe-0;
+		}
+	}
+
+	&.hide-header {
+		@apply py-0;
+	}
+
+	&.hide-navbar {
+		@apply px-0;
+
+		.lqd-page-wrapper {
+			@apply lg:ps-0;
+		}
+	}
+
+	&.is-auth-page {
+
+		.lqd-page-wrapper {
+			@apply ps-[--body-padding];
+		}
+	}
+}
+
+.lqd-page {
+	@apply h-full overflow-y-auto transition-colors max-lg:pb-16;
+}
+
+.lqd-page-content-wrap {
+	@apply bg-background rounded-2xl lg:h-screen transition-colors;
+}
+
+div.lqd-page-content-container {
+	@apply h-auto;
+}
+
+.lqd-page-wrapper {
+	@apply flex-wrap grow lg:overflow-hidden rounded-2xl lg:ps-[--navbar-fixed-width];
+}
+
+.top-notice-bar-visible {
+
+	~.lqd-page {
+
+		.lg\:top-\[--body-padding\] {
+			@apply lg:top-[calc(var(--body-padding)+var(--top-notice-bar-height))];
+		}
+
+		.lqd-page-content-wrap {
+			@apply lg:h-[calc(100%-var(--top-notice-bar-height))];
+		}
+	}
+}
+
+.theme-dark {
+	&:before {
+		content: '';
+		display: inline-block;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 0;
+		background-color: hsl(0 0% 0% / 50%);
+	}
+}
+
+@media (min-width: theme('screens.lg')) {
+
+	.lqd-page-content-wrap {
+		overflow-y: auto !important;
+	}
+}

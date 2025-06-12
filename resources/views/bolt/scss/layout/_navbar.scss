@@ -1,0 +1,57 @@
+.top-notice-bar-visible {
+
+	~ .lqd-page {
+
+		.lqd-navbar {
+			// @apply lg:pt-[calc(var(--body-padding)+var(--top-notice-bar-height))];
+		}
+	}
+}
+
+.lqd-navbar {
+	@apply pt-2.5 max-lg:rounded-b-2xl;
+
+	.lqd-navbar-ul-focus-middle {
+
+		.lqd-navbar-link {
+
+			&.active {
+
+				&:before {
+					@apply absolute bg-transparent top-0 h-full rounded-none bg-gradient-to-b from-transparent via-[#468EA6] to-transparent;
+					content: '';
+					inset-inline-start: calc((var(--navbar-ps) + 4px) * -1);
+					width: 3px;
+				}
+			}
+		}
+	}
+}
+
+body:not(.navbar-shrinked) {
+	.lqd-navbar-expander {
+		@apply ms-auto;
+	}
+}
+
+@media (min-width: theme("screens.lg")) {
+	.navbar-shrinked {
+		--navbar-width: 68px;
+
+		.lqd-navbar {
+			@apply border-transparent bg-transparent;
+		}
+		.lqd-navbar-dropdown:before {
+			width: calc(var(--label-offset) + 1.5rem);
+			inset-inline-start: calc((var(--label-offset) + 1.5rem) * -1);
+		}
+	}
+}
+
+@media (max-width: theme("screens.lg")) {
+
+	.lqd-navbar {
+		--navbar-foreground-active: var(--secondary);
+		--navbar-foreground-hover: var(--secondary);
+	}
+}

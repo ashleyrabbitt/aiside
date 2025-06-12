@@ -1,0 +1,61 @@
+@layer base {
+	:root {
+		--background: 20 20% 97%;
+		--foreground: 0 0% 20%;
+		--primary: 299 56% 19%;
+		--primary-foreground: 0 0% 100%;
+		--heading-foreground: 0 0% 20%;
+		--gradient-from: 16 82% 56%;
+		--gradient-via: 341 48% 51%;
+		--gradient-to: 35 61% 45%;
+		--body-padding: 12px;
+		--sidebar-width: 320px;
+		--navbar-fixed-width: 80px;
+		--navbar-width: 240px;
+		--navbar-icon-size: 1.35rem;
+		--border: 0 0% 91%;
+		--header-border: 20 10% 94%;
+		--input-background: 20 8% 92%;
+		--surface-background: 0 0% 100%;
+		--header-height: 4rem;
+		--label: var(--heading-foreground);
+		--dropdown-background: var(--surface-background);
+		--folder-background: 0 0% 100%;
+
+		--font-body: 'Lato';
+		--font-heading: 'Lato';
+
+		--h1-font-size: 2.125rem; // 34px
+		--h1-font-weight: 900;
+
+		--h2-font-size: 1.5rem; // 24px
+		--h2-font-weight: 800;
+
+		--h3-font-size: 1.25rem; // 20px
+		--h3-font-weight: 800;
+
+		--h4-font-size: 1.125rem; // 18px
+		--h4-font-weight: 700;
+
+		--h5-font-size: 1rem; // 16px
+		--h5-font-weight: 700;
+	}
+
+	.theme-dark {
+		--background: 15 9% 9%;
+		--primary: 299 56% 19%;
+		--navbar-background-active: 0 0% 100%;
+		--navbar-foreground-active: 0 0% 100%;
+		--navbar-background-hover: 0 0% 100%;
+		--navbar-foreground-hover: 0 0% 100%;
+		--surface: 20 4% 14%;
+		--surface-background: 20 4% 14%;
+	}
+
+	@media (max-width: theme('screens.md')) {
+
+		:root {
+			--body-padding: theme('size.2');
+		}
+	}
+}

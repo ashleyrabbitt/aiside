@@ -1,0 +1,12 @@
+.lqd-remaining-credit {
+
+	.lqd-progress-bar:first-child,
+	.lqd-legend:first-child .lqd-legend-box {
+		@apply bg-gradient-to-r from-gradient-from via-gradient-via to-gradient-to;
+	}
+
+	.lqd-progress-bar:last-child,
+	.lqd-legend:last-child .lqd-legend-box {
+		@apply bg-primary/10 dark:bg-heading-foreground/10;
+	}
+}

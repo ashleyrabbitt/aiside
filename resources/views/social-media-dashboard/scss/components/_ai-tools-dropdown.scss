@@ -1,0 +1,14 @@
+.ai-tools-list {
+
+	.lqd-navbar-link {
+
+		&:hover,
+		&.active {
+			@apply bg-gradient-to-r from-gradient-from via-gradient-via to-gradient-to text-primary-foreground;
+		}
+
+		.lqd-nav-link-label {
+			@apply text-current p-0 mt-auto;
+		}
+	}
+}

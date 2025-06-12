@@ -1,0 +1,20 @@
+{
+	"name": "bolt",
+	"extends": "default",
+	"asset-path": "themes\/bolt",
+	"dashboard": {
+		"sidebarEnabledPages": [
+			"dashboard.user.index",
+			"dashboard.user.openai.list",
+			"dashboard.user.openai.documents.all",
+			"dashboard.user.openai.documents.single"
+		],
+		"googleFonts": {
+			"Onest": [
+				"400",
+				"500",
+				"600"
+			]
+		}
+	}
+}

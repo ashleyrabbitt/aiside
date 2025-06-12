@@ -1,0 +1,26 @@
+.lqd-generators-container {
+	@apply p-5 overflow-hidden;
+
+	.lqd-generators-list {
+		@apply border-none gap-5 grid-cols-1 xl:grid-cols-3 md:grid-cols-2 lg:gap-11;
+
+		.lqd-generator-item {
+			@apply min-h-[280px] border rounded-2xl hover:bg-heading-foreground/5 hover:border-transparent;
+
+			.lqd-fav-btn {
+				@apply dark:shadow-[0_2px_1px_rgba(255,255,255,0.05)];
+
+				svg {
+					@apply size-3;
+				}
+			}
+		}
+	}
+}
+
+.lqd-image-result-actions {
+
+	.lqd-btn {
+		@apply dark:text-white;
+	}
+}

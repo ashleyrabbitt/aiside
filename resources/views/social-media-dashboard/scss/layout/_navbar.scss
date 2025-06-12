@@ -1,0 +1,69 @@
+body:not(.navbar-shrinked) {
+	.lqd-navbar-expander {
+		@apply ms-auto;
+	}
+
+	.lqd-navbar {
+		@apply bg-background shadow-2xl;
+	}
+}
+
+.lqd-navbar {
+	@apply pt-9 rounded-e-2xl max-lg:rounded-b-2xl;
+
+	.lqd-navbar-ul-focus-middle {
+
+		.lqd-navbar-link {
+
+			&.active {
+
+				&:before {
+					@apply absolute bg-transparent top-0 h-full rounded-none bg-gradient-to-b from-transparent via-[#468EA6] to-transparent;
+					content: '';
+					inset-inline-start: calc((var(--navbar-ps) + 4px) * -1);
+					width: 3px;
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: theme("screens.lg")) {
+	.lqd-navbar-logo {
+		@apply hidden;
+	}
+
+	.lqd-navbar {
+		top: 0 !important;
+		bottom: 0 !important;
+	}
+
+	.navbar-shrinked {
+		--label-offset: 0px;
+		--navbar-background: 0 0% 100% / 0%;
+		--navbar-foreground: 0 0% 100% / 80%;
+		--navbar-background-active: 0 0% 100% / 0%;
+		--navbar-foreground-active: 0 0% 100%;
+		--navbar-background-hover: 0 0% 100%;
+		--navbar-foreground-hover: 0 0% 100%;
+		--navbar-border: 0 0% 100% / 0%;
+		--navbar-divider: 0 0% 100% / 10%;
+
+		.lqd-navbar {
+			@apply border-transparent bg-transparent;
+		}
+
+		.lqd-nav-link-label {
+			@apply bg-background text-heading-foreground;
+		}
+
+		.lqd-navbar-dropdown {
+			@apply bg-background;
+
+			&:before {
+				width: calc(var(--label-offset) + 1.5rem);
+				inset-inline-start: calc((var(--label-offset) + 1.5rem) * -1);
+			}
+		}
+	}
+}

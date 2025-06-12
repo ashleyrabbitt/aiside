@@ -1,0 +1,21 @@
+.lqd-titlebar-pretitle {
+	@apply text-primary;
+}
+
+.lqd-titlebar {
+	@apply border-b-0;
+}
+
+body:not(.focus-mode) {
+
+	.lqd-titlebar {
+		@apply py-9 border-none;
+
+		~ .lqd-page-content-container {
+
+			> :is(.py-10, .py-6, .pt-10, .pt-6) {
+				@apply pt-0;
+			}
+		}
+	}
+}

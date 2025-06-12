@@ -1,0 +1,7 @@
+.search-results-container {
+
+	.lqd-icon {
+		background-color: theme('colors.heading.foreground/6%') !important;
+		@apply text-heading-foreground shadow;
+	}
+}

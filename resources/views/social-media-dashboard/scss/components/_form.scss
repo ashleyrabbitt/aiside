@@ -1,0 +1,15 @@
+.lqd-input {
+	@apply rounded-full placeholder:text-heading-foreground;
+}
+
+textarea.lqd-input {
+	@apply rounded-2xl;
+}
+
+.lqd-input-label {
+	@apply font-semibold text-xs mb-2;
+
+	&:has(.lqd-input-switcher) {
+		@apply mb-0;
+	}
+}

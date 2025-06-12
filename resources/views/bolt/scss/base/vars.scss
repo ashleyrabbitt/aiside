@@ -1,0 +1,71 @@
+/*
+	Start BC
+*/
+:root {
+}
+
+.theme-dark {
+}
+
+/*
+	End BC
+*/
+
+:root {
+	--background: 0 0 100%;
+	--background2: 240 1% 98%;
+	--foreground: 221 13% 46%;
+	--body-border: 214 51% 8%;
+	--body-padding: 1.25rem;
+	--heading-foreground: 214 51% 8%;
+	--primary: 214 51% 8%;
+	--primary-foreground: 0 0 100%;
+	--secondary: 258 97% 71%;
+	--secondary-foreground: 0 0 100%;
+	--border: 0 0 0% / 5%;
+	--surface: 240 14% 97%;
+	--folder-background: 0 0 95%;
+
+	--font-body: 'Onest';
+	--font-heading: 'Onest';
+
+	--h1-font-size: 1.3125rem; // 21px
+
+	--h2-font-size: 1.0625rem; // 17px
+
+	--h3-font-size: 0.875rem; // 14px
+
+	--header-height: 4.25rem; // 68px
+	--sidebar-width: 320px;
+
+	--navbar-fixed-width: 68px;
+	--navbar-width: 240px;
+	--navbar-background: var(--primary);
+	--navbar-foreground: 213 5% 54%;
+	--navbar-background-hover: 0 0 100%;
+	--navbar-foreground-hover: 0 0 100%;
+	--navbar-background-active: var(--secondary);
+	--navbar-foreground-active: var(--secondary-foreground);
+}
+
+.theme-dark {
+	--background: 214 41% 10%;
+	--foreground: 221 13% 46%;
+	--heading-foreground: 0 0 100%;
+	--primary: 258 97% 71%;
+	--primary-foreground: 0 0% 100%;
+	--secondary: 258 97% 71%;
+	--secondary-foreground: 0 0 100%;
+	--surface: 240 18% 15%;
+	--border: 0 0 100% / 5%;
+	--input-background: var(--background);
+
+	--dropdown-background: var(--background);
+}
+
+@media (max-width: theme('screens.md')) {
+
+	:root {
+		--body-padding: theme('size.2');
+	}
+}

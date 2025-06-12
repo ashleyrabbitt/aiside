@@ -1,0 +1,144 @@
+@import '../../default/scss/landing-page.scss';
+
+@property --gradient-from {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: hsl(16 82% 56%);
+}
+
+@property --gradient-via {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: hsl(312 61% 45%);
+}
+
+@property --gradient-to {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: hsl(35 61% 45%);
+}
+
+@layer base {
+
+	:root {
+		--primary: 16 82% 56%;
+		--primary-foreground: 0 0% 100%;
+		--gradient-from: hsl(16 82% 56%);
+		--gradient-via: hsl(312 61% 45%);
+		--gradient-to: hsl(35 61% 45%);
+		--background: 20 20% 97%;
+		--foreground: 0 0% 20%;
+		--surface-background: 0 0% 100%;
+		--border: 0 0% 96%;
+		--input-border: 0 0% 96%;
+		--heading-foreground: 0 0% 20%;
+		--body-padding: 12px;
+
+		--font-body: 'Golos Text';
+		--font-heading: 'Onest';
+
+		--h1-font-size: 4.6875rem; // 75px
+		--h1-line-height: 0.9em;
+		--h1-letter-spacing: -0.025em;
+
+		--h2-font-size: 2.875rem; // 46px
+		--h2-line-height: 1.1em;
+		--h2-letter-spacing: -0.01em;
+
+		--h3-font-size: 2.0625rem; // 33px
+		--h3-line-height: 1.2em;
+		--h3-letter-spacing: -0.01em;
+
+		--h4-font-size: 1.5625rem; // 25px
+		--h4-line-height: 1.2em;
+		--h4-font-weight: 700;
+		--h4-letter-spacing: 0;
+
+		--h5-font-size: 1.25rem; // 20px
+		--h5-line-height: 1.2em;
+		--h5-font-weight: 700;
+	}
+}
+
+@layer components {
+
+	.lqd-btn {
+		--gradient-from: transparent;
+		--gradient-via: transparent;
+		--gradient-to: transparent;
+		@apply text-heading-foreground font-heading hover:text-primary-foreground;
+		background-image: linear-gradient(to right, var(--gradient-from), var(--gradient-via), var(--gradient-to));
+		transition: var(--transitions, all 0.3s), --gradient-from 0.3s, --gradient-via 0.3s, --gradient-to 0.3s;
+	}
+
+	.lqd-btn:hover,
+	.lqd-btn-primary {
+		--gradient-from: hsl(16 82% 56%);
+		--gradient-via: hsl(312 61% 45%);
+		--gradient-to: hsl(35 61% 45%);
+	}
+}
+
+@layer utilities {
+
+	.bg-gradient {
+		background-image: linear-gradient(to right, var(--gradient-from), var(--gradient-via), var(--gradient-to));
+		transition: var(--transitions, all 0.3s), --gradient-from 0.3s, --gradient-via 0.3s, --gradient-to 0.3s;
+	}
+
+	.text-gradient {
+		@apply text-transparent bg-clip-text;
+		background-image: linear-gradient(to right, var(--gradient-from), var(--gradient-via), var(--gradient-to));
+	}
+}
+
+@media (max-width: theme('screens.sm')) {
+
+	:root {
+		--h1-font-size: 3.75rem; // 60px
+		--h2-font-size: 2.875rem; // 46px
+	}
+
+	html,
+	body {
+		overflow-x: hidden;
+	}
+}
+
+h1 u,
+h2 u {
+	text-decoration: none;
+	position: relative;
+	display: inline-block;
+}
+
+h1 u:after,
+h2 u:after {
+	content: '';
+	display: inline-block;
+	position: absolute;
+	bottom: -0.1em;
+	left: 0;
+	height: 2px;
+	/* size of the wave */
+	--s: 4px;
+	/* thickness of the line */
+	--b: 2.5px;
+	/* curvature of the wave [0 2] */
+	--m: 0.8;
+	background: currentColor;
+	--R: calc(var(--s)*sqrt(var(--m)*var(--m) + 1) + var(--b)/2);
+	height: calc(2*var(--R));
+	width: 100%;
+	--_g: #0000 calc(99% - var(--b)), #000 calc(101% - var(--b)) 99%, #0000 101%;
+	mask:
+		radial-gradient(var(--R) at left 50% bottom calc(-1*var(--m)*var(--s)), var(--_g)) calc(50% - 2*var(--s)) calc(50% - var(--s)/2 - var(--b)/2)/calc(4*var(--s)) calc(var(--s) + var(--b)) repeat-x,
+		radial-gradient(var(--R) at left 50% top calc(-1*var(--m)*var(--s)), var(--_g)) 50% calc(50% + var(--s)/2 + var(--b)/2)/calc(4*var(--s)) calc(var(--s) + var(--b)) repeat-x;
+}
+
+@media (min-width: 1500px) {
+
+	.container {
+		max-width: 1440px;
+	}
+}

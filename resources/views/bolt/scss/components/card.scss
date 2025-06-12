@@ -1,0 +1,22 @@
+.lqd-team-overview,
+.lqd-plan-overview,
+.lqd-affiliate-overview {
+	background-image: url('@themeAssets/bolt/assets/bg/titlebar-bg.jpg');
+	@apply bg-center bg-cover;
+}
+
+.lqd-ai-avatar-card {
+
+	h3 {
+		font-size: 1.25rem;
+	}
+}
+
+.theme-dark {
+
+	.lqd-team-overview,
+	.lqd-plan-overview,
+	.lqd-affiliate-overview {
+		background-image: url('@themeAssets/bolt/assets/bg/titlebar-bg-dark.jpg');
+	}
+}

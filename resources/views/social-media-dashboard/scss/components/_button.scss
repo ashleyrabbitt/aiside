@@ -1,0 +1,16 @@
+.lqd-btn {
+	@apply text-sm font-bold;
+
+	&.lqd-btn-outline,
+	&.lqd-btn-ghost-shadow {
+		@apply hover:bg-primary hover:text-primary-foreground;
+	}
+
+	&.lqd-btn-ghost-shadow {
+		@apply shadow-none bg-heading-foreground/5 text-heading-foreground;
+	}
+
+	&.lqd-btn-outline {
+		@apply hover:outline-primary;
+	}
+}

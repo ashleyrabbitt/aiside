@@ -1,0 +1,35 @@
+.chats-wrap {
+
+	.lqd-chat-head,
+	.chats-container,
+	.lqd-chat-form {
+		@apply lg:px-5;
+	}
+
+	.lqd-chat-head {
+		@apply bg-surface-background;
+	}
+
+	.conversation-area-wrap {
+
+		>.lqd-card-body {
+			@apply ps-0;
+		}
+	}
+}
+
+.chats-list-container {
+	@apply p-0;
+
+	.chat-list-item {
+
+		&:hover,
+		&.active {
+			@apply bg-transparent;
+		}
+	}
+}
+
+.chats-sidebar-expander {
+	@apply top-20 backdrop-blur-md;
+}

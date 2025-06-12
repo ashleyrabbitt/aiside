@@ -1,0 +1,20 @@
+.lqd-posts-folder {
+	@apply border-none;
+}
+
+.lqd-posts-container {
+
+	&[data-view-mode=grid] {
+
+		div.lqd-posts-item {
+			@apply bg-surface-background border-none shadow-md shadow-black/5;
+		}
+	}
+
+	&[data-view-mode=list] {
+
+		>div {
+			@apply border-none bg-surface-background shadow-black/5 shadow-md;
+		}
+	}
+}
