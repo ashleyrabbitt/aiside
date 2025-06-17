@@ -41,6 +41,16 @@ class User extends Authenticatable
         'name',
         'surname',
         'email',
+        'expertise_level',
+        'industry',
+        'communication_style',
+        'preferred_topics',
+        'response_length_preference',
+        'wants_examples',
+        'wants_step_by_step',
+        'ai_model_preferences',
+        'default_ai_tone',
+        'context_memory_length',
         'country',
         'otp',
         'type',
@@ -70,6 +80,11 @@ class User extends Authenticatable
         'defi_setting'      => 'json',
         'type'              => Roles::class,
         'entity_credits'    => 'array',
+        'preferred_topics'  => 'array',
+        'ai_model_preferences' => 'array',
+        'wants_examples'    => 'boolean',
+        'wants_step_by_step' => 'boolean',
+        'context_memory_length' => 'integer',
     ];
 
     public function teamId()
