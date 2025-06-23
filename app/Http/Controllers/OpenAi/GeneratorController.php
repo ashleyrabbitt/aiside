@@ -23,6 +23,8 @@ use App\Models\UserOpenaiChat;
 use App\Models\UserOpenaiChatMessage;
 use App\Services\Stream\StreamService;
 use App\Services\VectorService;
+use App\Services\AI\PromptEngineeringService;
+use App\Services\AI\ResponseEnhancerService;
 use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
@@ -193,7 +195,10 @@ class GeneratorController extends Controller
                 ];
             }
         } else {
-            $history[] = ['role' => $systemRole, 'content' => 'You are a helpful assistant.'];
+            // Use enhanced prompt engineering
+            $promptService = new PromptEngineeringService();
+            $enrichedPrompt = $promptService->buildEnrichedPrompt($prompt, $user, $category);
+            $history[] = ['role' => $systemRole, 'content' => $enrichedPrompt['system']];
         }
 
         $isFileSearch = setting('openai_file_search', 0) && $chat->openai_vector_id !== null;

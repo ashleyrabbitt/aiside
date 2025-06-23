@@ -20,6 +20,8 @@ use App\Models\UserOpenai;
 use App\Models\UserOpenaiChat;
 use App\Models\UserOpenaiChatMessage;
 use App\Services\Ai\OpenAI\FileSearchService;
+use App\Services\AI\PromptEngineeringService;
+use App\Services\AI\ResponseEnhancerService;
 use App\Services\Assistant\AssistantService;
 use App\Services\Bedrock\BedrockRuntimeService;
 use Exception;
@@ -1080,10 +1082,19 @@ class StreamService
             $driver = $this->createDriver(EntityEnum::fromSlug($chat_bot));
         }
 
-        return response()->stream(static function () use ($driver, $history, &$total_used_tokens, &$output, &$responsedText, $main_message, $contain_images, $tools) {
+        // Get dynamic parameters based on use case
+        $promptService = new PromptEngineeringService();
+        $lastUserMessage = collect($history)->where('role', 'user')->last();
+        $useCase = $promptService->determineUseCase($lastUserMessage['content'] ?? '', null);
+        $dynamicParams = $promptService->getModelParameters($useCase);
+
+        return response()->stream(static function () use ($driver, $history, &$total_used_tokens, &$output, &$responsedText, $main_message, $contain_images, $tools, $dynamicParams) {
             $chat_id = $main_message->user_openai_chat_id;
             $chat = UserOpenaiChat::whereId($chat_id)->first();
 
+            // Initialize response enhancer
+            $responseEnhancer = new ResponseEnhancerService();
+            
             echo "event: message\n";
             echo 'data: ' . $main_message->id . "\n\n";
             if (! $driver->hasCreditBalance()) {
@@ -1108,9 +1119,11 @@ class StreamService
             ];
 
             if (! in_array($model, [EntityEnum::GPT_4_O_MINI_SEARCH_PREVIEW->value, EntityEnum::GPT_4_O_SEARCH_PREVIEW->value], true)) {
-                $options['temperature'] = 1.0;
-                $options['frequency_penalty'] = 0;
-                $options['presence_penalty'] = 0;
+                // Use dynamic parameters instead of hardcoded values
+                $options['temperature'] = $dynamicParams['temperature'] ?? 0.7;
+                $options['frequency_penalty'] = $dynamicParams['frequency_penalty'] ?? 0.3;
+                $options['presence_penalty'] = $dynamicParams['presence_penalty'] ?? 0.3;
+                $options['top_p'] = $dynamicParams['top_p'] ?? 0.9;
             }
 
             if ($contain_images) {
