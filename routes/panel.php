@@ -834,6 +834,30 @@ Route::middleware(['auth', 'updateUserActivity'])
         //     Route::post('/save-settings', [ChatBotController::class, 'chatbotSettingsSave']);
         // });
 
+        // AI Side Hustle Features
+        Route::prefix('ai-side-hustle')
+            ->name('ai-side-hustle.')
+            ->middleware(['auth'])
+            ->group(function () {
+                // Main Dashboard
+                Route::get('/', [\App\Http\Controllers\AISideHustle\DashboardController::class, 'index'])->name('index');
+                
+                // User Preferences
+                Route::get('/preferences', [\App\Http\Controllers\AISideHustle\DashboardController::class, 'preferences'])->name('preferences');
+                Route::post('/preferences', [\App\Http\Controllers\AISideHustle\DashboardController::class, 'updatePreferences'])->name('preferences.update');
+                
+                // Context Recall
+                Route::resource('contexts', \App\Http\Controllers\AISideHustle\ContextController::class);
+                Route::post('contexts/{context}/entries', [\App\Http\Controllers\AISideHustle\ContextController::class, 'addEntry'])->name('contexts.add-entry');
+                
+                // Business Ideas
+                Route::get('business-ideas/generate', [\App\Http\Controllers\AISideHustle\BusinessIdeaController::class, 'generate'])->name('business-ideas.generate');
+                Route::post('business-ideas/generate', [\App\Http\Controllers\AISideHustle\BusinessIdeaController::class, 'generateIdeas'])->name('business-ideas.generate.process');
+                Route::get('business-ideas/review', [\App\Http\Controllers\AISideHustle\BusinessIdeaController::class, 'review'])->name('business-ideas.review');
+                Route::resource('business-ideas', \App\Http\Controllers\AISideHustle\BusinessIdeaController::class);
+                Route::post('business-ideas/{businessIdea}/generate-funnel', [\App\Http\Controllers\AISideHustle\BusinessIdeaController::class, 'generateFunnel'])->name('business-ideas.generate-funnel');
+            });
+
         // Search
         Route::post('/api/search', [SearchController::class, 'search']);
     });

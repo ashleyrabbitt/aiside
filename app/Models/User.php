@@ -400,4 +400,19 @@ class User extends Authenticatable
     {
         return $this->hasMany(\App\Models\Integration\WordPressPublishHistory::class);
     }
+
+    public function contexts(): HasMany
+    {
+        return $this->hasMany(Context::class);
+    }
+
+    public function businessIdeas(): HasMany
+    {
+        return $this->hasMany(BusinessIdea::class);
+    }
+
+    public function aiPreference(): HasOne
+    {
+        return $this->hasOne(UserAiPreference::class);
+    }
 }

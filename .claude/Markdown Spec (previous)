@@ -1,0 +1,102 @@
+
+# AI Side Hustle - Context Recall Tool & Business Launcher (Laravel Spec for Claude)
+
+## 🎯 Objective
+Help me build and extend a Laravel-based app that includes:
+- A Context Recall Engine to track user progress and resume work
+- An AI-powered Business Idea Generator
+- An Action Generator to recommend next steps
+- A user-facing dashboard
+- Optional integration with LangChain or CrewAI for advanced agents
+
+---
+
+## 🧩 Architecture Overview
+
+- Backend: PHP Laravel (MySQL, Redis, Blade)
+- AI: Claude API (Anthropic), possibly LangChain/CrewAI via Python microservice
+- Optional: Vue.js for frontend, Supabase for remote DB
+- Communication with AI via REST API (`Http::post()`)
+
+---
+
+## 🧠 Task Chain Instructions
+
+### Task 1: Context Recall Logic
+- Create a `contexts` table with: `id`, `user_id`, `title`, `description`, `tags`, `updated_at`
+- Create a `context_entries` table with: `id`, `context_id`, `notes`, `timestamp`, `ai_summary`
+- Prompt:
+  ```
+  Summarize this work log: {{user_notes}}
+  ```
+
+### Task 2: Next-Step Suggestion
+- Claude suggestion prompt:
+  ```
+  Based on this summary: '{{summary}}', what should I do next to keep momentum?
+  ```
+
+### Task 3: Business Generator
+- Generate niche + idea + audience + offer
+- Claude prompt:
+  ```
+  Suggest 3 online business ideas for a solopreneur who wants passive income and has 5 hours per week.
+  ```
+
+### Task 4: Funnel Generator
+- Generate:
+  - Landing page (headline, subhead, features)
+  - Email sequence (3-5 emails)
+- Prompt:
+  ```
+  Create a landing page for a digital planner product for ADHD entrepreneurs. Include a compelling hook, CTA, and 3 benefits.
+  ```
+
+### Task 5: Daily Dashboard Content
+- Include:
+  - Today’s top goal
+  - “Continue from where you left off”
+  - Suggested next 3 actions
+
+### Task 6: Claude Integration in Laravel
+- Use Laravel’s `Http::withToken()` to send API calls
+- Cache results for cost-efficiency
+- Use Laravel Queues for async calls to Claude
+
+---
+
+## 🛠 Claude Development Prompts
+
+When helping extend this tool, Claude should:
+- Offer database schema suggestions in Laravel migration syntax
+- Suggest routes, controllers, and Vue/Blade components
+- Assist with Claude prompt optimization for better summaries and next-action logic
+- Format responses to be JSON-parsable if returned to the frontend
+
+---
+
+## 🔁 Optional LangChain/CrewAI Microservice
+
+If required:
+- Build microservice in Python with FastAPI
+- Create chain: "Recall > Analyze > Suggest > Generate"
+- Laravel can `POST` and receive structured response
+
+---
+
+## 📦 Claude Output Format Suggestions
+
+```json
+{
+  "summary": "You were creating a content plan for a dropshipping store.",
+  "next_step": "Write 3 Instagram post ideas and finalize pricing.",
+  "confidence": "high"
+}
+```
+
+---
+
+## ✅ Goals
+- Enable users to always know their next step.
+- Build momentum and reduce friction.
+- Empower users to launch profitable micro-businesses using AI tools.

@@ -1,0 +1,60 @@
+project: AI Side Hustle - Context Recall Tool & Business Launcher
+tech_stack:
+  backend: Laravel (PHP)
+  database: MySQL
+  cache: Redis
+  frontend: Blade or Vue
+  ai: Claude API (Anthropic)
+  optional_ai: LangChain or CrewAI via Python microservice
+features:
+- name: Context Recall
+  tables:
+  - name: contexts
+    fields:
+    - id
+    - user_id
+    - title
+    - description
+    - tags
+    - updated_at
+  - name: context_entries
+    fields:
+    - id
+    - context_id
+    - notes
+    - timestamp
+    - ai_summary
+  prompt: 'Summarize this work log: {{user_notes}}'
+- name: Next-Step Suggestion
+  prompt: 'Based on this summary: ''{{summary}}'', what should I do next to keep momentum?'
+- name: Business Generator
+  prompt: Suggest 3 online business ideas for a solopreneur who wants passive income
+    and has 5 hours per week.
+- name: Funnel Generator
+  prompt: Create a landing page for a digital planner product for ADHD entrepreneurs.
+    Include a compelling hook, CTA, and 3 benefits.
+- name: Daily Dashboard Content
+  components:
+  - "Today\u2019s top goal"
+  - Continue from where you left off
+  - Suggested next 3 actions
+claude_integration:
+  methods:
+  - Laravel Http::withToken()
+  - Queued API calls
+  - Cache Claude responses
+optional_microservice:
+  tech: Python FastAPI
+  flow:
+  - Recall
+  - Analyze
+  - Suggest
+  - Generate
+output_format:
+  summary: string
+  next_step: string
+  confidence: high | medium | low
+goals:
+- Help users know their next step
+- Maintain momentum
+- Launch profitable micro-businesses with AI
